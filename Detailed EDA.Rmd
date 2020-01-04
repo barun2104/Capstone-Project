@@ -145,6 +145,12 @@ p2 <- card_data %>% ggplot(aes(mvar2)) + geom_histogram(fill = "steelblue") + co
 grid.arrange(p1, p2, ncol = 2)
 ```
 
+```{r}
+range(card_data$mvar2, na.rm = T)
+length(unique(card_data$mvar2))
+```
+
+
 **mvar3**
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
@@ -152,6 +158,11 @@ p1 <- card_data %>% ggplot(aes(y = mvar3)) + geom_boxplot(fill = "steelblue")
 p2 <- card_data %>% ggplot(aes(mvar3)) + geom_histogram(fill = "steelblue") + coord_flip() + 
   ylab(NULL)
 grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r}
+range(card_data$mvar3, na.rm = T)
+length(unique(card_data$mvar3))
 ```
 
 **mvar4**
@@ -163,6 +174,11 @@ p2 <- card_data %>% ggplot(aes(mvar4)) + geom_histogram(fill = "steelblue") + co
 grid.arrange(p1, p2, ncol = 2)
 ```
 
+```{r}
+range(card_data$mvar4, na.rm = T)
+length(unique(card_data$mvar4))
+```
+
 **mvar5**
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
@@ -172,6 +188,11 @@ p2 <- card_data %>% ggplot(aes(mvar5)) + geom_histogram(fill = "steelblue") + co
 grid.arrange(p1, p2, ncol = 2)
 ```
 
+```{r}
+range(card_data$mvar5, na.rm = T)
+length(unique(card_data$mvar5))
+```
+
 **mvar6**
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
@@ -179,6 +200,11 @@ p1 <- card_data %>% ggplot(aes(y = mvar6)) + geom_boxplot(fill = "steelblue")
 p2 <- card_data %>% ggplot(aes(mvar6)) + geom_histogram(fill = "steelblue") + coord_flip() + 
   ylab(NULL)
 grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r}
+range(card_data$mvar6, na.rm = T)
+length(unique(card_data$mvar6))
 ```
 
 In the above univariate plots, we can see that many variables have skewness in them and we might want to transform them before we use them in our models.
@@ -192,6 +218,11 @@ p2 <- card_data %>% ggplot(aes(mvar7)) + geom_histogram(fill = "steelblue") + co
 grid.arrange(p1, p2, ncol = 2)
 ```
 
+```{r}
+range(card_data$mvar7, na.rm = T)
+length(unique(card_data$mvar7))
+```
+
 **mvar8**
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
@@ -199,6 +230,11 @@ p1 <- card_data %>% ggplot(aes(y = mvar8)) + geom_boxplot(fill = "steelblue")
 p2 <- card_data %>% ggplot(aes(mvar8)) + geom_histogram(fill = "steelblue") + coord_flip() + 
   ylab(NULL)
 grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r}
+range(card_data$mvar8, na.rm = T)
+length(unique(card_data$mvar8))
 ```
 
 **mvar9**
@@ -210,6 +246,11 @@ p2 <- card_data %>% ggplot(aes(mvar9)) + geom_histogram(fill = "steelblue") + co
 grid.arrange(p1, p2, ncol = 2)
 ```
 
+```{r}
+range(card_data$mvar9, na.rm = T)
+length(unique(card_data$mvar9))
+```
+
 **mvar10**
 
 ```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
@@ -217,6 +258,11 @@ p1 <- card_data %>% ggplot(aes(y = mvar10)) + geom_boxplot(fill = "steelblue")
 p2 <- card_data %>% ggplot(aes(mvar10)) + geom_histogram(fill = "steelblue") + coord_flip() + 
   ylab(NULL)
 grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r}
+range(card_data$mvar10, na.rm = T)
+length(unique(card_data$mvar10))
 ```
 
 **mvar11**
@@ -309,6 +355,245 @@ p2 <- card_data %>% ggplot(aes(mvar20)) + geom_histogram(fill = "steelblue") + c
 grid.arrange(p1, p2, ncol = 2)
 ```
 
+**mvar21**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar21)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar21)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar22**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar22)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar22)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar23**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar23)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar23)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar24**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar24)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar24)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar25**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar25)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar25)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar26**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar26)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar26)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar27**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar27)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar27)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar28**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar28)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar28)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar29**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar29)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar29)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar30**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar30)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar30)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar31**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar31)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar31)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar32**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar32)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar32)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar33**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar33)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar33)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar34**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar34)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar34)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar35**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar35)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar35)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar36**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar36)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar36)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar37**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar37)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar37)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar38**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar38)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar38)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar39**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar39)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar39)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar40**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar40)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar40)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar41**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar41)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar41)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar42**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar42)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar42)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar43**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar43)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar43)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar44**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar44)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar44)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar45**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar45)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar45)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+**mvar46**
+
+```{r fig.height=4, fig.width=6, message=FALSE, warning=FALSE}
+p1 <- card_data %>% ggplot(aes(y = mvar46)) + geom_boxplot(fill = "steelblue") 
+p2 <- card_data %>% ggplot(aes(mvar46)) + geom_histogram(fill = "steelblue") + coord_flip() + 
+  ylab(NULL)
+grid.arrange(p1, p2, ncol = 2)
+```
+
+```{r fig.height=8, fig.width=10}
+plot_density(card_data)
+```
+
+
 ##### Bivariate Analysis
 
 Now, let's see the bivarite plot of each independent variable w.r.t. our dependent variable.
@@ -355,3 +640,23 @@ We can see that following variables have high correlations:
     + *mvar46* & *mvar4* - Severity of default on auto loan(s) is highly correlated with Number of auto loans on which borrower has missed 2 payments.
     
 We will be dropping variables from these pairs to avoid multicollinearity in the model.
+
+### Clustering
+
+```{r}
+cluster <- kmeans(na.omit(card_data[ ,-c(47, 48)]), 4)
+cluster
+```
+
+
+### PCA
+
+```{r}
+cards_pc <- prcomp(na.omit(card_data[ ,-c(47, 48)]), scale. = T)
+summary(cards_pc)
+```
+
+```{r}
+screeplot(cards_pc, type = "l")
+```
+
