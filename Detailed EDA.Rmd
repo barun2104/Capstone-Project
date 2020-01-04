@@ -301,10 +301,10 @@ high_correlations <- findCorrelation(cor_matrix, cutoff = 0.8, verbose = T, name
 
 We can see that following variables have high correlations:
 
-+ *mvar32* & *mvar37* - 
-+ *mvar27* & *mvar26* - 
-+ *mvar10* & *mvar7* - 
-+ *mavr22* & *mvar23* - 
++ *mvar32* & *mvar37* 
++ *mvar27* & *mvar26* 
++ *mvar10* & *mvar7* 
++ *mavr22* & *mvar23* 
 
 We will be dropping variables from these pairs to avoid multicollinearity in the model.
 
