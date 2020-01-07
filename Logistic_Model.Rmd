@@ -1,0 +1,206 @@
+---
+title: "Credit Card Default Prediction - Logistic Regression Model"
+output:
+  html_document:
+    df_print: paged
+---
+
+## Loading libraries
+Let's begin by loading required libraries.
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse) # several utility packages
+library(caret) # Classification & Regression Trees
+library(doParallel) # Parallel Processing
+library(e1071) # Machine Learning Models
+library(pROC) # Plotting ROC Curve
+```
+
+## Loading & Understanding Data
+
+Let's load our dataset and store it in a dataframe. When we opened our dataset in excel, we saw that missing values are denoted by different characters. We will use those while loading our dataset.
+
+```{r}
+card_data <- read.csv("Reduced_Dataset.csv")
+
+dim(card_data)
+
+head(card_data)
+
+tail(card_data)
+
+```
+
+Let's take a quick look at the structure of the dataset.
+
+```{r}
+glimpse(card_data)
+```
+
+Let's convert independent variables to factor.
+
+```{r}
+vars <- c("mvar16", "mvar17", "mvar18", "mvar19", "mvar20", "mvar34", "mvar35", "mvar39", "mvar45", "mvar46")
+
+for(i in vars) {
+  card_data[ , i] <- as.factor(card_data[ , i])
+}
+```
+
+Let's convert target variable to factor.
+
+```{r}
+card_data$default_ind <- as.factor(ifelse(card_data$default_ind == 1, "Yes", "No"))
+```
+
+## Imputing Missing Values
+
+```{r}
+imputation_model <- preProcess(card_data, method = c("center", "scale", "bagImpute"))
+imputed_data <- predict(imputation_model, card_data)
+```
+
+## Model Training
+
+Now, let's train logistic regression model using 10 fold cross validation.
+
+### Splitting Train & Test Data
+
+```{r}
+set.seed(1985)
+index <- createDataPartition(imputed_data$default_ind, p = 0.7, list = F)
+train <- imputed_data[index, ]
+test <- imputed_data[-index, ]
+```
+
+### Setting up train control object
+
+```{r}
+fit.control <- trainControl(method = "repeatedcv", number = 10, repeats = 3, savePredictions = T,
+                            classProbs = T)
+```
+
+### Training Logistic Regression Model
+
+```{r}
+logit.fit <- train(default_ind ~ ., data = train, method = "glm", trControl = fit.control)
+
+logit.fit
+```
+
+### Checking final model contents
+
+```{r}
+summary(logit.fit$finalModel)
+```
+
+### Predicting on Train Set
+
+```{r}
+train_prediction <- predict(logit.fit, train, type = "raw")
+```
+
+### Confusion Matrix
+
+```{r}
+confusionMatrix(train$default_ind, train_prediction, positive = "Yes")
+```
+
+We can see that the model accuracy on train data is around 80%. However, there is significant increase in model sensitivity, which increased from 40% earlier to 64% now. Let's check model performance on test data.
+
+### Predicting on Test Set
+
+
+```{r}
+test_prediction <- predict(logit.fit, test, type = "raw")
+```
+
+### Confusion Matrix
+
+```{r}
+confusionMatrix(test$default_ind, test_prediction, positive = "Yes")
+```
+
+We can see that the model performance is quite consistant on both train as well as test data. Model's sensitivity is low at only around 65%. Let's see whether we can improve that by adjusting the classification threshold.
+
+### Adjusting Threshold Value
+
+```{r}
+test_prob <- predict(logit.fit, test, type = "prob")
+test_default_prob <- test_prob[2]
+```
+
+#### ROC Curve
+
+```{r}
+
+```
+
+#### Setting the threshold at 0.65
+
+```{r}
+default_pred <- as.factor(ifelse(test_default_prob >= 0.7, "Yes", "No"))
+```
+
+### Confusion Matrix after adjusting threshold
+
+```{r}
+confusionMatrix(test$default_ind, default_pred, positive = "Yes")
+```
+
+We can see that though the model sensitivity is increasing after adjusting the threshold, more and more False Negatives are getting generated. This will ultimately be detremental for the business as they will be rejecting more applicants who might not be going to default, meaning loss to the business. 
+
+Since the dataset has class imbalance we can try to improve the model by using sampling techniques like up, down or SMOTE. Let's do that.
+
+### Setting up train control object with SMOTE
+
+```{r}
+fit.control <- trainControl(method = "repeatedcv", number = 10, repeats = 3, savePredictions = T,
+                            classProbs = T, allowParallel = T, sampling = "smote")
+```
+
+### Initializing parallel computing
+
+```{r}
+n.cores <- detectCores() - 1
+cl <- makeCluster(n.cores)
+registerDoParallel(cl)
+```
+
+### Training Logistic Regression Model
+
+```{r}
+glm.fit.smote <- train(default_ind ~ ., data = train, method = "glmnet", trControl = fit.control, tuneLength = 3, family = "binomial")
+
+glm.fit.smote
+```
+
+### Stop parallel computing
+
+```{r}
+stopCluster(cl)
+```
+
+### Predicting on Train Set
+
+```{r}
+glm_train_prediction <- predict(glm.fit.smote, train, type = "raw")
+```
+
+### Confusion Matrix
+
+```{r}
+confusionMatrix(train$default_ind, glm_train_prediction, positive = "Yes")
+```
+
+### Predicting on Test Set
+
+```{r}
+glm_test_prediction <- predict(glm.fit.smote, test, type = "raw")
+```
+
+### Confusion Matrix
+
+```{r}
+confusionMatrix(test$default_ind, glm_test_prediction, positive = "Yes")
+```
